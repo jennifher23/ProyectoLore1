@@ -1,38 +1,23 @@
-//import { CommonModule } from '@angular/common';
+import { AuthRoutingModule } from './auth/auth-routing.module';
 import { NgModule } from '@angular/core';
+
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
-import { CatalogueComponent } from './pages/catalogue/catalogue.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { PagesComponent } from './pages/pages.component';
-import { ProductComponent } from './pages/product/product.component';
+import { PagesRoutingModule } from './pages/pages-routing.module';
 
- const routes:Routes = [
-    //rutas protegidas
-    {path:'',
-    component:PagesComponent,
-    children:[
-    //pages
-    {path:'dashboard', component:DashboardComponent},
-    {path:'catalogue', component:CatalogueComponent},
-    {path:'products', component:ProductComponent},
-    //{path:'', redirectTo:'/dashboard', pathMatch:'full'},
-    ]},
-    //auth
-    {path:'login', component:LoginComponent},
-    {path:'register', component:RegisterComponent},
+import { CommonModule } from '@angular/common';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { NotFoundRoutingModule } from './not-found/not-found-routing.module';
 
-    
-    {path:'**', component:NotFoundComponent}    
- ];
+const routes: Routes = [
+  //* Rutas hijas o rutas protegidas
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+];
+
 @NgModule({
   declarations: [],
-  imports: [
-    RouterModule.forRoot(routes),
-    //CommonModule
-  ],
-  exports:[RouterModule],
+
+  imports: [CommonModule, RouterModule, PagesRoutingModule,AuthRoutingModule,NotFoundRoutingModule,RouterModule.forRoot(routes)], //*especificamos las rutas principales con forRoot
+
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }
