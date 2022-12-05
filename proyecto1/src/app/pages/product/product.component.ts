@@ -13,15 +13,15 @@ export class ProductComponent implements OnInit {
 
   ngOnInit(): void {
     //this.getProduct();
-    // this.getProducts();
+    //this.getProducts();
     //this.updateProduct();
-    this.deleteProduct();
-    //this.createProduct();
+    //this.deleteProduct();
+    this.createProduct();
     
   }
   getProducts() {
    this.httpClient
-      .get('https://api.escuelajs.co/api/v1/products').subscribe(
+      .get('http://api.escuelajs.co/api/v1/products').subscribe(
         response => {                      //funcion flecha o landa
         console.log(response);
       });
@@ -30,20 +30,20 @@ export class ProductComponent implements OnInit {
 //Observable trae la informacion
   getProduct() {
     this.httpClient
-      .get('https://api.escuelajs.co/api/v1/products/9')
+      .get('http://api.escuelajs.co/api/v1/products/16')
       .subscribe(response => {
         console.log(response);
       });
   }
   createProduct() {
     const data = {
-      title: 'Erika Cuadros',
+      title: 'PAMELA CHUGCHILAN',
       price: 20,
       description: 'Estudiante De Desarrollo de Software ',
       category: 9,
       images: ['https://api.lorem.space/image/shoes?w=640&h=480&r=8318'],
     };
-    const url = 'https://api.escuelajs.co/api/v1/products';
+    const url = 'http://api.escuelajs.co/api/v1/products/16';
 
     this.httpClient.post(url, data).subscribe((response) => {
       console.log(response);
@@ -59,7 +59,7 @@ export class ProductComponent implements OnInit {
       category: 2,
       images: ['https://api.lorem.space/image/shoes?w=640&h=480&r=8318'],
     };
-    const url = 'https://api.escuelajs.co/api/v1/products/200';
+    const url = 'http://api.escuelajs.co/api/v1/products/16';
 
     this.httpClient.put(url, data).subscribe((response) => {
       console.log(response);
@@ -67,7 +67,7 @@ export class ProductComponent implements OnInit {
 
   }
   deleteProduct(){
-    const url = 'https://api.escuelajs.co/api/v1/products/202';
+    const url = 'http://api.escuelajs.co/api/v1/products/16';
 
     this.httpClient.delete(url).subscribe((response) => {
       console.log(response);

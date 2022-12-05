@@ -12,6 +12,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { PagesComponent } from './pages/pages.component';
 import { StaicComponent } from './static/staic.component';
 import { UserComponent } from './user/user/user.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { UserComponent } from './user/user/user.component';
     AuthModule,
     StaticModule,
     PagesModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
